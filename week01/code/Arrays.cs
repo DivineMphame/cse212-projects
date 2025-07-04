@@ -8,12 +8,18 @@ public static class Arrays
     /// <returns>array of doubles that are the multiples of the supplied number</returns>
     public static double[] MultiplesOf(double number, int length)
     {
-        // TODO Problem 1 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        //First, we need to create an array to store the result.
+        double[] result = new double[length];
+        //Next, we will loop from 0 to length - 1.
+        for (int i = 0; i < length; i++)
+        {
+            //For step 3 ,each index i, store the value number * (i + 1).
+            result[i] = number * (i + 1);
+        }
+        //Finally, we return the result array.
+        // This will give us an array of multiples of the given number.
 
-        return []; // replace this return statement with your own
+        return result; 
     }
 
     /// <summary>
@@ -25,9 +31,22 @@ public static class Arrays
     /// </summary>
     public static void RotateListRight(List<int> data, int amount)
     {
-        // TODO Problem 2 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
+        // First,we use the modulo operator to prevent over-rotation.
+        amount = amount % data.Count;
+        // Next, if there is no rotation needed, we can return early.
+        if (amount == 0)
+            return;
+
+        // Step 3,we will get the last 'amount' elements from the list.
+        List<int> tail = data.GetRange(data.Count - amount, amount);
+        // Step 4, get the first 'data.Count - amount', elements.
+        List<int> head = data.GetRange(0, data.Count - amount);
+        // Step 5, clear the original list and add tail first,then head.
+        data.Clear();
+        data.AddRange(tail);
+        data.AddRange(head);
+    }
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
     }
-}
+
